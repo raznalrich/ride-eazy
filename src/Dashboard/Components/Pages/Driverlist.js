@@ -6,7 +6,10 @@ import '../Sidebar.css';
 
 function Driverlist() {
   const [databaselist,setdatabaselist] = useState([])
-const databasecollectionref = collection(Firebase , 'driver')
+
+
+  useEffect(() =>{
+    const databasecollectionref = collection(Firebase , 'driver')
 
   const getdatabaselist = async() =>{
     const data = await getDocs(databasecollectionref)
@@ -20,8 +23,6 @@ const databasecollectionref = collection(Firebase , 'driver')
     
 
   }
-
-  useEffect(() =>{
     getdatabaselist()
 
   },[]

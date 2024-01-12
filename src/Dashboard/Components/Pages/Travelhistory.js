@@ -7,7 +7,10 @@ import '../Sidebar.css';
 
 function Travelhistory() {
   const [databaselist,setdatabaselist] = useState([])
-const databasecollectionref = collection(Firebase , 'history')
+
+
+  useEffect(() =>{
+    const databasecollectionref = collection(Firebase , 'history')
 
   const getdatabaselist = async() =>{
     const data = await getDocs(databasecollectionref)
@@ -21,8 +24,6 @@ const databasecollectionref = collection(Firebase , 'history')
     
 
   }
-
-  useEffect(() =>{
     getdatabaselist()
 
   },[]

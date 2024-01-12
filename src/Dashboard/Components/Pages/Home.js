@@ -8,47 +8,57 @@ function Home() {
   const [databaselist,setdatabaselist] = useState([])
   const [adminlist,setadminlist] = useState([])
   const [userCount, setUserCount] = useState(0);
-const databasecollectionref = collection(Firebase , 'addtravel')
-const admincollectionref = collection(Firebase , 'admin')
-const usersCollectionRef = collection(Firebase, 'users');
 
-  const getdatabaselist = async() =>{
-    const data = await getDocs(databasecollectionref)
-    const filtereddata = data.docs.map((doc)=>(
-      {...doc.data(),
-      id:doc.id
-      }
-    )).filter((item) => item.completed === 0);
-    console.log(filtereddata);
-    
-    setdatabaselist(filtereddata);
-    
 
-  }
-  const admindata = async() =>{
-    const data = await getDocs(admincollectionref)
-    const filtereddata = data.docs.map((doc)=>(
-      {...doc.data(),
-      id:doc.id
-      }
-    ))
-    console.log(filtereddata);
-    setadminlist(filtereddata);
-    
-
-  }
-  const getusercount = async() =>{
-    try {
-      const querySnapshot = await getDocs(usersCollectionRef);
-      const count = querySnapshot.size;
-      setUserCount(count);
-    } catch (error) {
-      console.error('Error fetching user count:', error);
-    }
-  }
+  
+  
+  
 // eslint-disable-next-line
   useEffect(() =>{
-    // eslint-disable-next-line
+    const databasecollectionref = collection(Firebase , 'addtravel')
+const admincollectionref = collection(Firebase , 'admin')
+const usersCollectionRef = collection(Firebase, 'users');
+    //user count
+    const getusercount = async() =>{
+      try {
+        const querySnapshot = await getDocs(usersCollectionRef);
+        const count = querySnapshot.size;
+        setUserCount(count);
+      } catch (error) {
+        console.error('Error fetching user count:', error);
+      }
+    }
+
+
+    //admin
+    const admindata = async() =>{
+      const data = await getDocs(admincollectionref)
+      const filtereddata = data.docs.map((doc)=>(
+        {...doc.data(),
+        id:doc.id
+        }
+      ))
+      
+      setadminlist(filtereddata);
+      
+  
+    }
+
+    //databse
+    const getdatabaselist = async() =>{
+      const data = await getDocs(databasecollectionref)
+      const filtereddata = data.docs.map((doc)=>(
+        {...doc.data(),
+        id:doc.id
+        }
+      )).filter((item) => item.completed === 0);
+      console.log(filtereddata);
+      
+      setdatabaselist(filtereddata);
+      
+  
+    }
+    
     getdatabaselist()
     admindata()
     getusercount()

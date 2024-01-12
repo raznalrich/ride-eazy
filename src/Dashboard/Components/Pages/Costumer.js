@@ -6,22 +6,23 @@ import '../Sidebar.css';
 
 function Costumer() {
   const [databaselist,setdatabaselist] = useState([])
-  const databasecollectionref = collection(Firebase , 'users')
-  
-    const getdatabaselist = async() =>{
-      const data = await getDocs(databasecollectionref)
-      const filtereddata = data.docs.map((doc)=>(
-        {...doc.data(),
-        id:doc.id
-        }
-      )).filter((item) => item.role === 'user');
-      console.log(filtereddata);
-      setdatabaselist(filtereddata);
-      
-  
-    }
+
   
     useEffect(() =>{
+      const databasecollectionref = collection(Firebase , 'users')
+  
+      const getdatabaselist = async() =>{
+        const data = await getDocs(databasecollectionref)
+        const filtereddata = data.docs.map((doc)=>(
+          {...doc.data(),
+          id:doc.id
+          }
+        )).filter((item) => item.role === 'user');
+        console.log(filtereddata);
+        setdatabaselist(filtereddata);
+        
+    
+      }
       getdatabaselist()
   
     },[]

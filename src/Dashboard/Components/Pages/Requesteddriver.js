@@ -6,21 +6,7 @@ import '../Sidebar.css';
 
 function Requesteddriver() {
   const [databaselist,setdatabaselist] = useState([])
-const databasecollectionref = collection(Firebase , 'driver')
 
-  //database list
-  const getdatabaselist = async() =>{
-    const data = await getDocs(databasecollectionref)
-    const filtereddata = data.docs.map((doc)=>(
-      {...doc.data(),
-      id:doc.id
-      }
-    )).filter((item) => item.role === 0);
-    console.log(filtereddata);
-    setdatabaselist(filtereddata);
-    
-
-  }
   //accept
 const handleAccept = async (id)=>{
     const driverref = doc(collection(Firebase , 'driver'),id);
@@ -35,6 +21,21 @@ const handleAccept = async (id)=>{
 }
 
   useEffect(() =>{
+    const databasecollectionref = collection(Firebase , 'driver')
+
+  //database list
+  const getdatabaselist = async() =>{
+    const data = await getDocs(databasecollectionref)
+    const filtereddata = data.docs.map((doc)=>(
+      {...doc.data(),
+      id:doc.id
+      }
+    )).filter((item) => item.role === 0);
+    console.log(filtereddata);
+    setdatabaselist(filtereddata);
+    
+
+  }
     getdatabaselist()
 
   },[]
