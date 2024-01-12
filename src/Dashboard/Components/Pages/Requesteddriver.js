@@ -71,9 +71,9 @@ const handleAccept = async (id)=>{
             <td>{channel.email}</td>
             <td>{channel.Phone}</td>
             <td>{channel.car_model}</td>
-            <td style={{background :"Blue"}}><a href={channel.front_license}  target="_blank"> <p style={{color:"white"}}>Front License</p></a></td>
-            <td style={{background :"Blue"}}><a href={channel.back_license}  target="_blank"><p style={{color:"white"}}>Back License</p></a></td>
-            <td style={{background :"Blue"}}><a href={channel.insurance}  target="_blank"><p style={{color:"white"}}>Insurance</p></a></td>
+            <td style={{background :"Blue"}}><a href={channel.front_license}  > <p style={{color:"white"}}>Front License</p></a></td>
+            <td style={{background :"Blue"}}><a href={channel.back_license}  ><p style={{color:"white"}}>Back License</p></a></td>
+            <td style={{background :"Blue"}}><a href={channel.insurance}  ><p style={{color:"white"}}>Insurance</p></a></td>
             <td onClick={()=> handleAccept(channel.id)} style={{background :"green"}}><p style={{color:"white"}}>Accept</p></td>
           </tr>
           

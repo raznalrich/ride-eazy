@@ -46,8 +46,9 @@ const usersCollectionRef = collection(Firebase, 'users');
       console.error('Error fetching user count:', error);
     }
   }
-
+// eslint-disable-next-line
   useEffect(() =>{
+    // eslint-disable-next-line
     getdatabaselist()
     admindata()
     getusercount()
