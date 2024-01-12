@@ -1,0 +1,16 @@
+.home_Container{
+    display: flex;
+    gap: 30px;
+}
+.earningcard{
+    padding: 20px;
+    background: linear-gradient(#0051ff, #02a2ff);
+    border-radius: 5px;
+    width: 250px;
+    cursor: pointer;
+}
+.earningcard:hover{
+    background: #00184d;
+}
+
+
